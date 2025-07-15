@@ -34,7 +34,6 @@ module.exports = async (req, res) => {
     A partir del siguiente texto informal o abreviado, redacta una versión clara, profesional y completa de la historia clínica, con lenguaje técnico médico y buena redacción.
 
     Busca incluir en tu respuesta la siguiente información, sin inventar nada.
-    En caso de no estar la información completa indica claramente que hace falta para cumplir con los requisitos exigidos.
         - Antecedentes
         - Medicamentos que toma el paciente
         - Síntomas del paciente
@@ -42,6 +41,10 @@ module.exports = async (req, res) => {
         - Tomó medicamentos adicionales
         - Atenuantes y exhacerbantes
         - Pertinentes negativos (MUY IMPORTANTE pues es un seguro legal para los médicos)
+
+    
+    En un parrafo aparte señalale al médico que le puede hacer falta, es decir primero completa la historia clínica y luego en
+    un parrafo adicional haz las recomendaciones al médico sobre información que pueda hacer falta.
 
     Texto original del médico:
     "${texto_usuario}"
