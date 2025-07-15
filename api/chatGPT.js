@@ -44,7 +44,7 @@ module.exports = async (req, res) => {
 
     
     En un parrafo aparte señalale al médico que le puede hacer falta, es decir primero completa la historia clínica y luego en
-    un parrafo adicional haz las recomendaciones al médico sobre información que pueda hacer falta.
+    un parrafo adicional cuyo titulo en mayusculas es "IMPORTANTE:" haz las recomendaciones al médico sobre información que pueda hacer falta.
 
     Texto original del médico:
     "${texto_usuario}"
