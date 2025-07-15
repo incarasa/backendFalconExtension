@@ -2,8 +2,5 @@
   "version": 2,
   "builds": [
     { "src": "api/chatGPT.js", "use": "@vercel/node" }
-  ],
-  "env": {
-    "CHATGPT_API_KEY": "@chatgpt_api_key"
-  }
+  ]
 }
