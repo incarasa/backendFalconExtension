@@ -26,8 +26,9 @@ module.exports = async (req, res) => {
 A partir del siguiente texto escrito por un médico, redacta una historia clínica clara y ordenada, con lenguaje técnico y profesional. Puedes reorganizar la información en secciones como síntomas, antecedentes, medicamentos, etc., siempre respetando el contenido original.
 
 No debes inventar información ni agregar síntomas o antecedentes que no estén escritos. Puedes inferir relaciones simples si están implícitas (por ejemplo, duración si se menciona tiempo), pero no añadas datos clínicos nuevos.
+En la primer parte no uses markdown.
 
-Incluye al final un apartado titulado "IMPORTANTE:" donde señales (en forma de bullets) si falta información clave para completar la historia clínica.
+Incluye al final un apartado titulado "IMPORTANTE:" donde señales (en forma de bullets) si falta información clave para completar la historia clínica. Puedes usar markdown si deseas.
 
 
 Texto original del médico:
