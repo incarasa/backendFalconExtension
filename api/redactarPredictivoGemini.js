@@ -56,7 +56,7 @@ Redacta el texto corregido a continuación, sin el encabezado (Enfermedad actual
     const texto_mejorado = response.text();
 
     // Separar sección IMPORTANTE
-    const partes = respuestaTexto.split("IMPORTANTE:");
+    const partes = texto_mejorado.split("IMPORTANTE:");
     const textoMejorado = partes[0]?.trim() ?? "";
     const textoImportante = partes[1]?.trim() ?? "";
 
