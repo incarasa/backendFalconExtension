@@ -27,7 +27,7 @@ A partir del siguiente texto escrito por un médico, redacta una historia clíni
 
 No debes inventar información ni agregar síntomas o antecedentes que no estén escritos. Puedes inferir relaciones simples si están implícitas (por ejemplo, duración si se menciona tiempo), pero no añadas datos clínicos nuevos.
 
-Incluye al final un apartado titulado "IMPORTANTE:" donde señales si falta información clave para completar la historia clínica.
+Incluye al final un apartado titulado "IMPORTANTE:" donde señales (en forma de bullets) si falta información clave para completar la historia clínica.
 
 No uses ningún tipo de formato Markdown ni caracteres especiales como * o **. Escribe todo en texto plano sin negritas, listas, guiones ni símbolos.
 
