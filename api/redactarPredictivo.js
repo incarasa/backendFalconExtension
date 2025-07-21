@@ -43,7 +43,7 @@ module.exports = async (req, res) => {
         - Pertinentes negativos (MUY IMPORTANTE pues es un seguro legal para los médicos)
 
     
-    En un parrafo aparte señalale al médico que le puede hacer falta, es decir primero completa la historia clínica y luego en
+    En un parrafo aparte (con el título "IMPORTANTE:") señalale al médico que le puede hacer falta, es decir primero completa la historia clínica y luego en
     un parrafo adicional (en forma de bullets) cuyo titulo en mayusculas es "IMPORTANTE:" haz las recomendaciones al médico sobre información que pueda hacer falta.
 
     Texto original del médico:

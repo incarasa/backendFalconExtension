@@ -43,7 +43,15 @@ Redacta el texto corregido a continuación, sin encabezado:
     const response = await result.response;
     const texto_mejorado = response.text();
 
-    res.status(200).json({ texto_mejorado });
+    // Separar sección IMPORTANTE
+    const partes = texto_mejorado.split("IMPORTANTE:");
+    const textoMejorado = partes[0]?.trim() ?? "";
+    const textoImportante = partes[1]?.trim() ?? "";
+
+    res.status(200).json({
+      texto_mejorado: textoMejorado,
+      texto_importante: textoImportante
+    });
   } catch (error) {
     console.error("Error con Gemini:", {
       message: error.message,
