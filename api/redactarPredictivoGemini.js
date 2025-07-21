@@ -42,6 +42,8 @@ Busca incluir en tu respuesta la siguiente información, sin inventar nada:
 
 En un párrafo aparte señálale al médico qué le puede hacer falta. Es decir, primero completa la historia clínica y luego, en un párrafo adicional cuyo título en mayúsculas sea "IMPORTANTE:", haz las recomendaciones al médico sobre información que pueda hacer falta.
 
+No uses ningún tipo de formato Markdown ni caracteres especiales como * o **. Escribe todo en texto plano sin negritas, listas, guiones ni símbolos.
+
 Texto original del médico:
 "${texto_usuario}"
 
