@@ -30,6 +30,7 @@ module.exports = async (req, res) => {
     No debes inventar información ni agregar síntomas o antecedentes que no estén escritos. Puedes inferir relaciones simples si están implícitas (por ejemplo, duración si se menciona tiempo), pero no añadas datos clínicos nuevos.
 
     Incluye al final un apartado titulado "IMPORTANTE:" donde señales si falta información clave para completar la historia clínica.
+    Donde sea necesario incluye las fuentes médicas o científicas de donde obtuviste la información para brindarle más confianza al médico.
 
     Texto original del médico:
     "${texto_usuario}"

@@ -29,6 +29,7 @@ No debes inventar información ni agregar síntomas o antecedentes que no estén
 En la primer parte no uses markdown.
 
 Incluye al final un apartado titulado "IMPORTANTE:" donde señales (en forma de bullets) si falta información clave para completar la historia clínica. Puedes usar markdown si deseas.
+Donde sea necesario incluye las fuentes médicas o científicas de donde obtuviste la información para brindarle más confianza al médico.
 
 
 Texto original del médico:
