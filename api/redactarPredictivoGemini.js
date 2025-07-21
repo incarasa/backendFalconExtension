@@ -40,7 +40,11 @@ Busca incluir en tu respuesta la siguiente información, sin inventar nada:
   - Atenuantes y exacerbantes
   - Pertinentes negativos (MUY IMPORTANTE pues es un seguro legal para los médicos)
 
-En un párrafo aparte (con el título "IMPORTANTE:") señálale al médico qué le puede hacer falta. Es decir, primero completa la historia clínica y luego, en un párrafo adicional (usando bullets) cuyo título en mayúsculas sea "IMPORTANTE:", haz las recomendaciones al médico sobre información que pueda hacer falta. Es importante que cites la fuente de donde sacaste la información.
+En un párrafo aparte (con el título "IMPORTANTE:") señálale al médico qué le puede hacer falta. Es decir, primero completa la historia clínica y luego, en un párrafo adicional (usando bullets) cuyo título en mayúsculas sea "IMPORTANTE:", haz las recomendaciones al médico sobre información que pueda hacer falta.
+En caso de ser necesario incluye bajo el título de "EXÁMEN FÍSICO:" los procedimientos que el médico debería hacer en el examen físico.
+Luego bajo el titulo de "IMPRESIÓN DIAGNÓSTICA:" has una impresión diagnóstica para guíar al médico.
+Luego bajo el titulo de "POSIBLE TRATAMIENTO:" sugiere un tratamiento al médico.
+
 
 
 Texto original del médico:
