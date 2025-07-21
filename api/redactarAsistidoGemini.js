@@ -29,7 +29,6 @@ No debes inventar información ni agregar síntomas o antecedentes que no estén
 
 Incluye al final un apartado titulado "IMPORTANTE:" donde señales (en forma de bullets) si falta información clave para completar la historia clínica.
 
-No uses ningún tipo de formato Markdown ni caracteres especiales como * o **. Escribe todo en texto plano sin negritas, listas, guiones ni símbolos.
 
 Texto original del médico:
 "${texto_usuario}"
