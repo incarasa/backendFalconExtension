@@ -44,7 +44,7 @@ module.exports = async (req, res) => {
 
     
     En un parrafo aparte señalale al médico que le puede hacer falta, es decir primero completa la historia clínica y luego en
-    un parrafo adicional cuyo titulo en mayusculas es "IMPORTANTE:" haz las recomendaciones al médico sobre información que pueda hacer falta.
+    un parrafo adicional (en forma de bullets) cuyo titulo en mayusculas es "IMPORTANTE:" haz las recomendaciones al médico sobre información que pueda hacer falta.
 
     Texto original del médico:
     "${texto_usuario}"
@@ -66,7 +66,18 @@ module.exports = async (req, res) => {
     });
 
     const respuestaTexto = response.choices[0].message.content;
-    res.status(200).json({ texto_mejorado: respuestaTexto });
+
+    // Separar sección IMPORTANTE
+    const partes = respuestaTexto.split("IMPORTANTE:");
+    const textoMejorado = partes[0]?.trim() ?? "";
+    const textoImportante = partes[1]?.trim() ?? "";
+
+    res.status(200).json({
+      texto_mejorado: textoMejorado,
+      texto_importante: textoImportante
+    });
+
+/*     res.status(200).json({ texto_mejorado: respuestaTexto }); */
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Hubo un problema al procesar la solicitud." });
