@@ -44,6 +44,7 @@ En un párrafo aparte (con el título "IMPORTANTE:") señálale al médico qué 
 En caso de ser necesario incluye bajo el título de "EXÁMEN FÍSICO:" los procedimientos que el médico debería hacer en el examen físico.
 Luego bajo el titulo de "IMPRESIÓN DIAGNÓSTICA:" has una impresión diagnóstica para guíar al médico.
 Luego bajo el titulo de "POSIBLE TRATAMIENTO:" sugiere un tratamiento al médico.
+Donde sea necesario incluye las fuentes médicas o científicas de donde obtuviste la información para brindarle más confianza al médico.
 
 
 

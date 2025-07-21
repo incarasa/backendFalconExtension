@@ -45,6 +45,10 @@ module.exports = async (req, res) => {
     
     En un parrafo aparte (con el título "IMPORTANTE:") señalale al médico que le puede hacer falta, es decir primero completa la historia clínica y luego en
     un parrafo adicional (en forma de bullets) cuyo titulo en mayusculas es "IMPORTANTE:" haz las recomendaciones al médico sobre información que pueda hacer falta.
+    En caso de ser necesario incluye bajo el título de "EXÁMEN FÍSICO:" los procedimientos que el médico debería hacer en el examen físico.
+    Luego bajo el titulo de "IMPRESIÓN DIAGNÓSTICA:" has una impresión diagnóstica para guíar al médico.
+    Luego bajo el titulo de "POSIBLE TRATAMIENTO:" sugiere un tratamiento al médico.
+    Donde sea necesario incluye las fuentes médicas o científicas de donde obtuviste la información para brindarle más confianza al médico.
 
     Texto original del médico:
     "${texto_usuario}"
