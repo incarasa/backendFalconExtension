@@ -55,7 +55,12 @@ Redacta el texto corregido a continuación, sin el encabezado (Enfermedad actual
 `;
 
   try {
-    const model = geminiClient.getGenerativeModel({ model: "gemini-2.5-pro" });
+    const model = geminiClient.getGenerativeModel({ 
+      model: "gemini-2.5-pro",
+      tools: [
+        { google_search_retrieval: {} }
+      ] 
+    })
 
     const result = await model.generateContent(prompt);
     const response = await result.response;
