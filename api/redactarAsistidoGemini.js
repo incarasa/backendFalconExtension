@@ -39,14 +39,21 @@ Redacta el texto corregido a continuación, sin encabezado:
 `;
 
   try {
-    const model = geminiClient.getGenerativeModel({ 
+    const model = geminiClient.getGenerativeModel({
       model: "gemini-2.5-pro",
       tools: [
         { google_search_retrieval: {} }
-      ] 
+      ]
     });
-
-    const result = await model.generateContent(prompt);
+    
+    const result = await model.generateContent({
+      contents: [
+        {
+          role: "user",
+          parts: [{ text: prompt }]
+        }
+      ]
+    });
     const response = await result.response;
     const texto_mejorado = response.text();
 
