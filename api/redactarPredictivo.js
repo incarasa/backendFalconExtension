@@ -21,14 +21,14 @@ module.exports = async (req, res) => {
     return res.status(405).json({ error: "Only POST requests allowed" });
   }
 
-  const { texto_usuario } = req.body;
+  const { texto_usuario, requisitos } = req.body;
 
   if (!texto_usuario || texto_usuario.trim() === "") {
     return res.status(400).json({ error: "Texto del usuario vacío." });
   }
 
   // PROMPT MÉDICO PARA REDACCIÓN PROFESIONAL DE HISTORIA CLÍNICA
-  const prompt = `
+  /* const prompt = `
     Eres un asistente médico experto en redacción de historias clínicas según estándares legales en Colombia.
 
     A partir del siguiente texto informal o abreviado, redacta una versión clara, profesional y completa de la historia clínica, con lenguaje técnico médico y buena redacción.
@@ -41,6 +41,28 @@ module.exports = async (req, res) => {
         - Tomó medicamentos adicionales
         - Atenuantes y exhacerbantes
         - Pertinentes negativos (MUY IMPORTANTE pues es un seguro legal para los médicos)
+
+    
+    En un parrafo aparte (con el título "IMPORTANTE:") señalale al médico que le puede hacer falta, es decir primero completa la historia clínica y luego en
+    un parrafo adicional (en forma de bullets) cuyo titulo en mayusculas es "IMPORTANTE:" haz las recomendaciones al médico sobre información que pueda hacer falta.
+    En caso de ser necesario incluye bajo el título de "EXÁMEN FÍSICO:" los procedimientos que el médico debería hacer en el examen físico.
+    Luego bajo el titulo de "IMPRESIÓN DIAGNÓSTICA:" has una impresión diagnóstica para guíar al médico.
+    Luego bajo el titulo de "POSIBLE TRATAMIENTO:" sugiere un tratamiento al médico.
+    Donde sea necesario incluye las fuentes médicas o científicas de donde obtuviste la información para brindarle más confianza al médico.
+
+    Texto original del médico:
+    "${texto_usuario}"
+
+    Redacta el texto corregido a continuación, sin el encabezado (Enfermedad actual:):
+  `; */
+
+    const prompt = `
+    Eres un asistente médico experto en redacción de historias clínicas según estándares legales en Colombia.
+
+    A partir del siguiente texto informal o abreviado, redacta una versión clara, profesional y completa de la historia clínica, con lenguaje técnico médico y buena redacción.
+
+    Busca incluir en tu respuesta la siguiente información, sin inventar nada (el médico quiere que sigas el formato a continuación):
+    ${requisitos}
 
     
     En un parrafo aparte (con el título "IMPORTANTE:") señalale al médico que le puede hacer falta, es decir primero completa la historia clínica y luego en
