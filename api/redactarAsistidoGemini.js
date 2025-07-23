@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
     return res.status(405).json({ error: "Only POST requests allowed" });
   }
 
-  const { texto_usuario } = req.body;
+  const { texto_usuario, requisitos } = req.body;
 
   if (!texto_usuario || texto_usuario.trim() === "") {
     return res.status(400).json({ error: "Texto del usuario vacío." });
@@ -24,6 +24,9 @@ module.exports = async (req, res) => {
 
   const prompt = `
 A partir del siguiente texto escrito por un médico, redacta una historia clínica clara y ordenada, con lenguaje técnico y profesional. Puedes reorganizar la información en secciones como síntomas, antecedentes, medicamentos, etc., siempre respetando el contenido original.
+
+Por otra parte, trata de seguir las instrucciones (si las hay) del médico a continuación:
+Instrucciones del médico: "${requisitos}"
 
 No debes inventar información ni agregar síntomas o antecedentes que no estén escritos. Puedes inferir relaciones simples si están implícitas (por ejemplo, duración si se menciona tiempo), pero no añadas datos clínicos nuevos.
 En la primer parte no uses markdown.
