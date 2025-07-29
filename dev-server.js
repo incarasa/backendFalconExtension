@@ -15,6 +15,7 @@ app.post("/api/redactarManual", require("./api/redactarManual"));
 app.post("/api/redactarManualGemini", require("./api/redactarManualGemini"));
 app.post("/api/redactarPredictivo", require("./api/redactarPredictivo"));
 app.post("/api/redactarPredictivoGemini", require("./api/redactarPredictivoGemini"));
+app.post("/api/redactarPredictivoGemma", require("./api/redactarPredictivoGemma"));
 
 // Puedes probar este también:
 app.get("/api/hello", require("./api/hello"));

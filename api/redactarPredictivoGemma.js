@@ -1,3 +1,10 @@
+console.log("🟢 El endpoint redactarPredictivoGemma.js ha sido cargado.");
+module.exports = async (req, res) => {
+  res.status(200).json({ ok: true });
+};
+
+
+
 const aws4 = require("aws4");
 const https = require("https");
 require("dotenv").config();
