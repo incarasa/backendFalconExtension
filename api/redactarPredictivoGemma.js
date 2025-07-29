@@ -1,16 +1,11 @@
-console.log("🟢 El endpoint redactarPredictivoGemma.js ha sido cargado.");
-module.exports = async (req, res) => {
-  res.status(200).json({ ok: true });
-};
-
-
-
 const aws4 = require("aws4");
 const https = require("https");
 require("dotenv").config();
 
 const endpointHost = "runtime.sagemaker.us-east-2.amazonaws.com";
 const endpointPath = "/endpoints/medgemma-27b-endpoint/invocations";
+
+console.log("🟢 El endpoint redactarPredictivoGemma.js ha sido cargado.");
 
 module.exports = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -27,13 +22,21 @@ module.exports = async (req, res) => {
   }
 
   const prompt = `
-A partir del siguiente texto escrito por un médico, redacta una historia clínica clara y ordenada, con lenguaje técnico y profesional. Puedes reorganizar la información en secciones como síntomas, antecedentes, medicamentos, etc., siempre respetando el contenido original.
-Por otra parte, trata de seguir las instrucciones (si las hay) del médico a continuación:
-Instrucciones del médico: "${requisitos}"
+Eres un asistente médico experto en redacción de historias clínicas según estándares legales en Colombia.
 
-No debes inventar información ni agregar síntomas o antecedentes que no estén escritos. Puedes inferir relaciones simples si están implícitas (por ejemplo, duración si se menciona tiempo), pero no añadas datos clínicos nuevos.
+A partir del siguiente texto informal o abreviado, redacta una versión clara, profesional y completa de la historia clínica, con lenguaje técnico médico y excelente redacción.
 
-IMPORTANTE: Incluye al final un apartado titulado "IMPORTANTE:" donde señales si falta información clave para completar la historia clínica.
+Organiza la historia clínica incluyendo las secciones que el médico ha solicitado:
+${requisitos}
+
+Además, complementa la historia con las siguientes secciones inferidas clínicamente, siempre que sea posible:
+- EXAMEN FÍSICO: Describe las exploraciones que el médico debería realizar.
+- IMPRESIÓN DIAGNÓSTICA: Sugiere un posible diagnóstico clínico con base en la información dada.
+- POSIBLE TRATAMIENTO: Recomienda un tratamiento inicial razonable o medidas a tomar, aclarando que son sugerencias clínicas y no prescripciones.
+
+IMPORTANTE: Al final, incluye una sección titulada "IMPORTANTE:" en mayúsculas, con bullets que indiquen la información faltante que el médico debe complementar.
+
+Donde sea necesario, incluye fuentes médicas reconocidas o evidencia científica que respalde tus sugerencias.
 
 Texto original del médico:
 "${texto_usuario}"
@@ -41,7 +44,15 @@ Texto original del médico:
 Redacta el texto corregido a continuación, sin encabezado:
 `;
 
-  const body = JSON.stringify({ inputs: prompt });
+  const body = JSON.stringify({
+    inputs: prompt,
+    parameters: {
+      max_new_tokens: 768,
+      temperature: 0.7,
+      do_sample: true,
+      return_full_text: false
+    }
+  });
 
   const requestOptions = {
     host: endpointHost,
@@ -69,7 +80,20 @@ Redacta el texto corregido a continuación, sin encabezado:
       });
 
       awsRes.on("end", () => {
-        const respuestaTexto = JSON.parse(data).generated_text || data;
+        let respuestaTexto = "";
+        try {
+          const json = JSON.parse(data);
+          if (Array.isArray(json) && json[0]?.generated_text) {
+            respuestaTexto = json[0].generated_text;
+          } else if (json.generated_text) {
+            respuestaTexto = json.generated_text;
+          } else {
+            respuestaTexto = data;
+          }
+        } catch (err) {
+          console.error("Error al parsear respuesta de MedGemma:", err);
+          respuestaTexto = data;
+        }
 
         const partes = respuestaTexto.split("IMPORTANTE:");
         const textoMejorado = partes[0]?.trim() ?? "";

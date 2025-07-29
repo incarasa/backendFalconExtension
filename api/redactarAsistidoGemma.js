@@ -34,8 +34,16 @@ Texto original del médico:
 Redacta el texto corregido a continuación, sin encabezado:
 `;
 
-  const body = JSON.stringify({ inputs: prompt });
-
+  const body = JSON.stringify({
+    inputs: prompt,
+    parameters: {
+      max_new_tokens: 512,
+      temperature: 0.7,
+      do_sample: true,
+      return_full_text: false
+    }
+  });
+  
   const requestOptions = {
     host: endpointHost,
     path: endpointPath,
@@ -62,7 +70,22 @@ Redacta el texto corregido a continuación, sin encabezado:
       });
 
       awsRes.on("end", () => {
-        const respuestaTexto = JSON.parse(data).generated_text || data;
+        let respuestaTexto = "";
+        try {
+          const json = JSON.parse(data);
+
+          // Si la respuesta es un array [{ generated_text: "..." }]
+          if (Array.isArray(json) && json[0]?.generated_text) {
+            respuestaTexto = json[0].generated_text;
+          } else if (json.generated_text) {
+            respuestaTexto = json.generated_text;
+          } else {
+            respuestaTexto = data;
+          }
+        } catch (err) {
+          console.error("Error al parsear respuesta de MedGemma:", err);
+          respuestaTexto = data;
+        }
 
         const partes = respuestaTexto.split("IMPORTANTE:");
         const textoMejorado = partes[0]?.trim() ?? "";
